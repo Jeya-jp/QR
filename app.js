@@ -14,8 +14,45 @@ function onLoad()
      
 
      let id = split_rollno[1].split("=")
-     console.log(id[1]) 
 
      document.getElementById("id").value = id[1];
+
+
+
+     fetch("ids.json").then(function(resp)
+     {
+         return resp.json();
+     })
+     .then(function(data)
+     {          
+        let idMatched=0;
+        let idNotMatched=0;
+         for(i=0;i<data.length;i++)
+         {
+            d = data[i].id
+            iid = id[1]
+  
+             if(d == iid)
+             {
+                idMatched = 1
+             }
+            else
+            {
+                idNotMatched = 1
+            }
+     
+         }
+         if(idMatched==1)
+         {
+            
+         }
+         else
+         {
+             alert("Invalid Entry")
+
+         }
+     })  
+
+     
     
 }
