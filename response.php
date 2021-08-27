@@ -55,7 +55,8 @@
                 	{
                 		echo "<script>alert('Attendance Recorded')
                 		location.replace('https://qr-attadance.000webhostapp.com/index.html');
-                		</script>";	
+                		</script>";
+                		
                 	} 
                 	$conn->close();
                 }	
@@ -68,6 +69,7 @@
     		location.replace('https://qr-attadance.000webhostapp.com/index.html');
     		</script>");
     	}
+        
     }
     
     else
@@ -75,8 +77,15 @@
 	    echo ("<script>
 		alert('Invalid Entry..!');
 		location.replace('https://qr-attadance.000webhostapp.com/index.html');
-		</script>");   
-    }   
+		</script>");
+        
+    }
+
+	
+
+
+
+   
 ?>
 
 
