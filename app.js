@@ -1,21 +1,58 @@
 function onLoad()
 {
     let url = window.location.href
-    console.log(url)
-// http://127.0.0.1:5500/response.php?rollno=19mca003&id=6788
-    let split_rollno = url.split("rollno=")
-    console.log(split_rollno[0])
-    console.log(split_rollno[1])
+
+    let filterurl = url.split("id=");
+    let filterid = filterurl[1].split("&")
     
+    let split_rollno = url.split("rollno=")
+     let date = url.split("zdx=");
+     
+     document.getElementById("date").value = date[1];
      let rollno = split_rollno[1].split("&")
-     console.log(rollno[1])
     
      document.getElementById("roll").value = rollno[0];
+        
+    document.getElementById("id").value = filterid[0];
+
+     let clientid = filterid[0];
      
 
-     let id = split_rollno[1].split("=")
-     console.log(id[1]) 
 
-     document.getElementById("id").value = id[1];
+     fetch("ids.json").then(function(resp)
+     {
+         return resp.json();
+     })
+     .then(function(data)
+     {          
+        
+        let idMatched=0;
+        let idNotMatched=0;
+         for(i=0;i<data.length;i++)
+         {
+            d = data[i].id
+
+             if(d == clientid)
+             {
+                idMatched = 1
+             }
+            else
+            {
+                idNotMatched = 0
+            }
+     
+         }
+         if(idMatched==1)
+         {
+            
+         }
+         else
+         {
+             alert("Invalid Entry")
+             
+         }
+     })  
+
+     
     
 }
